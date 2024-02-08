@@ -6,7 +6,7 @@ from users.models import User
 
 from access.serializers import AccessSerializer
 
-from core.authentication import CustomUserAuthentication
+from core.auth.authentication import CustomUserAuthentication
 
 import logging
 
