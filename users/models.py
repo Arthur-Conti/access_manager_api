@@ -37,7 +37,7 @@ class UserManager(auth_models.BaseUserManager):
         return user
     
 class User(auth_models.AbstractUser):
-    first_name = models.CharField(verbobse_name='First Name', max_length=255)
+    first_name = models.CharField(verbose_name='First Name', max_length=255)
     last_name = models.CharField(verbose_name='Last Name', max_length=255)
     email = models.EmailField(verbose_name='Email', max_length=255, unique=True)
     password = models.CharField(max_length=255)
@@ -46,4 +46,4 @@ class User(auth_models.AbstractUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'password']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'password']

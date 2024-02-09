@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from access.models import Access
 from users.models import User
 
-from access.serializers import AccessSerializer
+from access.serializers.access_serializers import AccessSerializer
 
 from core.auth.authentication import CustomUserAuthentication
 
@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(levelname)s:      %(message)s')
 logging.basicConfig(level=logging.ERROR, format='%(levelname)s:         %(message)s')
-                    
+
 
 class AccessInfo(viewsets.ViewSet):
     authentication_classes = (CustomUserAuthentication,)
@@ -44,10 +44,11 @@ class AccessInfo(viewsets.ViewSet):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
+            print(serializer.validated_data)
             access = serializer.create(user, serializer.validated_data)
             access_serialized = self.serializer_class(access).data
         else:
             logger.error(f'Serializer error: {serializer.errors}')
             raise ValueError(serializer.errors)
-        
+
         return Response(access_serialized)

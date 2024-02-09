@@ -13,7 +13,7 @@ class CustomUserAuthentication(authentication.BaseAuthentication):
 
         if not token:
             return None
-        
+
         try:
             payload = jwt.decode(token, settings.JWT_SECRET, algorithms=['HS256'])
         except:

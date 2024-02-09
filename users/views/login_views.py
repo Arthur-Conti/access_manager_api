@@ -22,6 +22,7 @@ class Login(ViewSet):
 
         token = self.token_manager.create_token(user.id)
 
-        Response().set_cookie(key='jwt', value=token, hhtponly=True)
+        resp = Response()
+        resp.set_cookie(key='jwt', value=token, httponly=True)
 
-        return Response()
+        return resp

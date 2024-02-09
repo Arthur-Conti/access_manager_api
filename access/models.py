@@ -29,7 +29,7 @@ class Access(models.Model):
     title = models.CharField(verbose_name='Title', max_length=255)
     username = models.CharField(verbose_name='Username', max_length=255)
     password = models.CharField(verbose_name='Password', max_length=255)
-    url = models.CharField(verbose_name='URL')
+    url = models.URLField(verbose_name='URL')
     notes = models.TextField(verbose_name='Notes', max_length=255)
 
     objects = AccessManager()
